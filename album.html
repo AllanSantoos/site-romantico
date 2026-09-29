@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Álbum ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(255,100,150,.18), transparent 25%),
+                radial-gradient(circle at 90% 40%, rgba(255,255,255,.08), transparent 25%),
+                linear-gradient(145deg, #250713, #67152f 50%, #18050d);
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        header .heart {
+            font-size: 52px;
+            animation: pulse 1.5s infinite;
+        }
+
+        h1 {
+            margin: 12px 0;
+            font-size: clamp(2rem, 6vw, 3.7rem);
+        }
+
+        header p {
+            max-width: 720px;
+            margin: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: .9;
+        }
+
+        .album {
+            width: min(820px, 92vw);
+            margin: 0 auto 55px;
+            display: grid;
+            gap: 35px;
+        }
+
+        .foto-card {
+            padding: 14px;
+            border-radius: 24px;
+            background: rgba(255,255,255,.09);
+            border: 1px solid rgba(255,255,255,.18);
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+            backdrop-filter: blur(8px);
+        }
+
+        .foto-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 16px;
+            background: rgba(0,0,0,.12);
+        }
+
+        .legenda {
+            padding: 20px 10px 8px;
+            text-align: center;
+            font-size: clamp(1rem, 2.3vw, 1.3rem);
+            line-height: 1.5;
+        }
+
+        .numero {
+            margin-bottom: 7px;
+            color: #ff9bb8;
+            font-size: .8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 5px 20px 55px;
+            text-align: center;
+            font-size: 1rem;
+            opacity: .8;
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(1.15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="heart">❤️</div>
+
+        <h1>
+            Estou brincando, Te amo Dona Onça
+        </h1>
+
+        <p>
+            Guardei alguns momentos nossos aqui...
+            porque cada foto conta um pedacinho da nossa história. ❤️
+        </p>
+    </header>
+
+    <main class="album">
+
+        <article class="foto-card">
+            <img src="fotos/foto1.png" alt="Foto 1">
+            <div class="legenda">
+                <div class="numero">Foto 1</div>
+                Minha primeira vez conhecendo sua família
+            </div>
+        </article>
+
+        <article class="foto-card">
+            <img src="fotos/foto2.jpeg" alt="Foto 2">
+            <div class="legenda">
+                <div class="numero">Foto 2</div>
+                Quando virou Vascaina kkkk
+            </div>
+        </article>
+
+        <article class="foto-card">
+            <img src="fotos/foto3.png" alt="Foto 3">
+            <div class="legenda">
+                <div class="numero">Foto 3</div>
+                Meu primeiro jantar com a minha mulher.
+            </div>
+        </article>
+
+        <article class="foto-card">
+            <img src="fotos/foto4.png" alt="Foto 4">
+            <div class="legenda">
+                <div class="numero">Foto 4</div>
+                Aqui nem preciso dizer nada a perfeição dessa mulher e a sorte que eu tenho de ter
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        Feito com ❤️ para a Dona Onça
+    </footer>
+
+</body>
+</html>

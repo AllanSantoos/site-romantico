@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você me odeia? ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,.16), transparent 25%),
+                radial-gradient(circle at 85% 80%, rgba(255,100,150,.22), transparent 30%),
+                linear-gradient(135deg, #430c23, #8d294c 52%, #260611);
+        }
+
+        .card {
+            width: min(92vw, 620px);
+            padding: 55px 30px 45px;
+            text-align: center;
+            border-radius: 30px;
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.25);
+            box-shadow: 0 25px 80px rgba(0,0,0,.38);
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart {
+            font-size: 58px;
+            animation: pulse 1.4s infinite;
+        }
+
+        h1 {
+            margin: 15px 0 12px;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+        }
+
+        .subtitle {
+            margin-bottom: 32px;
+            font-size: 1.15rem;
+            opacity: .9;
+        }
+
+        .botoes {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 999px;
+            padding: 15px 32px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0,0,0,.25);
+        }
+
+        #sim {
+            background: white;
+            color: #8d294c;
+            position: relative;
+            z-index: 5;
+            transition: transform .2s;
+        }
+
+        #sim:hover {
+            transform: scale(1.07);
+        }
+
+        #nao {
+            background: #ff477e;
+            color: white;
+            position: relative;
+            z-index: 10;
+            transition: left .18s ease, top .18s ease;
+            white-space: nowrap;
+        }
+
+        .hint {
+            margin-top: 12px;
+            font-size: .82rem;
+            opacity: .7;
+        }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            opacity: .55;
+            animation: subir 7s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes subir {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: .6;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="heart">❤️</div>
+
+        <h1>Você me odeia?</h1>
+
+        <div class="subtitle">
+            Responda com sinceridade... 😏
+        </div>
+
+        <div class="botoes">
+            <button id="sim" onclick="abrirAlbum()">
+                Sim ❤️
+            </button>
+
+            <!--
+                onclick="desvia(this)"
+                Faz o botão fugir quando a pessoa tenta clicar nele.
+
+                onmouseover="desvia(this)"
+                Faz o botão fugir assim que o mouse passa sobre ele.
+
+                "this" representa o próprio botão NÃO.
+            -->
+            <button
+                id="nao"
+                onclick="desvia(this)"
+                onmouseover="desvia(this)"
+                ontouchstart="desvia(this)">
+                Não 😏
+            </button>
+        </div>
+
+        <div class="hint">
+            Cuidado com a resposta... 👀
+        </div>
+    </div>
+
+    <script>
+        function desvia(btn) {
+            // Move o botão para uma posição fixa dentro da janela.
+            btn.style.position = "fixed";
+            btn.style.zIndex = "9999";
+            btn.style.right = "auto";
+            btn.style.bottom = "auto";
+
+            // Mede o botão depois de aplicar position: fixed e limita
+            // as coordenadas para ele nunca sair da área visível.
+            const margem = 12;
+            const rect = btn.getBoundingClientRect();
+            const maxX = Math.max(margem, window.innerWidth - rect.width - margem);
+            const maxY = Math.max(margem, window.innerHeight - rect.height - margem);
+            const x = margem + Math.random() * Math.max(0, maxX - margem);
+            const y = margem + Math.random() * Math.max(0, maxY - margem);
+
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+
+        function abrirAlbum() {
+            window.open("album.html", "_blank");
+        }
+
+        // Corações flutuando no fundo
+        for (let i = 0; i < 14; i++) {
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+            heart.textContent = "❤";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDelay = Math.random() * 7 + "s";
+            heart.style.fontSize = (14 + Math.random() * 25) + "px";
+
+            document.body.appendChild(heart);
+        }
+    </script>
+
+</body>
+</html>
